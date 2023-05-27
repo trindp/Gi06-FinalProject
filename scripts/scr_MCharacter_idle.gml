@@ -1,11 +1,10 @@
 scr_get_input();
 sprite_index = Character_idle;
-if (pressA == pressD) {
+if (pressA == pressD and pressA == 1) {
     state = character.idle;
 } else if (pressA or pressD) {
     state = character.walking_horizontal;
-}
-if (pressW == pressS) {
+} else if (pressW == pressS and pressW == 1) {
     state = character.idle;
 } else if (pressW or pressS) {
     state = character.walking_vertical;
