@@ -37,7 +37,8 @@ state = character.idle
 
 //abilities
 spd = 5;
-spd_nor = 2;
+spd_nor_h = 2;
+spd_nor_v = 2;
 spd_run = 4;
 moveX = 0;
 moveY = 0;
