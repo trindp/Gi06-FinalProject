@@ -111,7 +111,8 @@ y += moveY;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(20, 20, string(state));
+            <string>draw_text(20, 20, string(moveX));
+draw_text(20, 40, string(moveY));
 </string>
           </argument>
         </arguments>

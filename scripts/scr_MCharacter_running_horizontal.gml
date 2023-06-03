@@ -14,5 +14,5 @@ if (pressA == pressD) {
     moveX = 0;
     image_index = 0;
     image_speed = 0;
-    state = character.running_horizontal;
+    state = character.running_vertical;
 }
