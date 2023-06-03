@@ -11,10 +11,12 @@
       <sprite>sprites\Character_walking</sprite>
       <sprite>sprites\Character_running</sprite>
     </sprites>
+    <sprite>sprites\spr_border</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_maiin</background>
     <background>background\tile_main2</background>
+    <background>background\tile_main3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -29,6 +31,7 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_MCharacter</object>
+    <object>objects\obj_border</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

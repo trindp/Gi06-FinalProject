@@ -3,7 +3,7 @@ sprite_index = Character_running;
 image_speed = 0.6;
 
 spd = spd_run;
-moveY = (pressS - pressW) * spd;
+moveY = (pressS - pressW) * spd_run;
 if (pressW == pressS) {
     state = character.idle;
 } else if (relShift) {

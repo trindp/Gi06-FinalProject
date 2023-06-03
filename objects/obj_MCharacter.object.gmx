@@ -38,13 +38,27 @@ state = character.idle
 //abilities
 spd = 5;
 spd_nor_h = 2;
-spd_nor_v = 2;
 spd_run = 4;
 moveX = 0;
+spd_nor_v = 2;
 moveY = 0;
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>0</libid>
+        <id>0</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="3" enumb="0">
@@ -75,13 +89,30 @@ switch (state) {
     case character.walking_vertical:
         scr_MCharacter_walking_vertical();
         break;
-    case character.running_horizontal:
-        scr_MCharacter_running_horizontal();
-        break;
     case character.running_vertical:
         scr_MCharacter_running_vertical();
         break;
+    case character.running_horizontal:
+        scr_MCharacter_running_horizontal();
+        break;
+
 }
+
+// COLLISION CHECK
+if (place_meeting(x, y + moveY, obj_border)) {
+    while (!place_meeting(x, y + sign(moveY), obj_border)) {
+        y += sign(moveY);
+    }
+    moveY = 0;
+}
+
+if (place_meeting(x + moveX , y-2, obj_border)) {
+    while (!place_meeting(x + sign(moveX), y - 2, obj_border)) {
+        x += sign(moveX);
+    }
+    moveX = 0;
+}
+
 //Sprite Controller
 if (pressA + pressD !=0 and pressA != pressD) {
     image_xscale = sign(pressD - pressA);
