@@ -12,6 +12,17 @@
       <sprite>sprites\Character_running</sprite>
     </sprites>
     <sprite>sprites\spr_border</sprite>
+    <sprites name="Key">
+      <sprite>sprites\spr_keyRed</sprite>
+      <sprite>sprites\spr_keyGreen</sprite>
+      <sprite>sprites\spr_keyBlue</sprite>
+      <sprite>sprites\spr_keyYellow</sprite>
+      <sprite>sprites\spr_brokenKey</sprite>
+      <sprite>sprites\spr_MainKey</sprite>
+    </sprites>
+    <sprite>sprites\spr_chest</sprite>
+    <sprite>sprites\spr_openedchest</sprite>
+    <sprite>sprites\spr_guiChest</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_maiin</background>
@@ -32,6 +43,13 @@
   <objects name="objects">
     <object>objects\obj_MCharacter</object>
     <object>objects\obj_border</object>
+    <object>objects\obj_chest</object>
+    <object>objects\obj_keyRed</object>
+    <object>objects\obj_keyBlue</object>
+    <object>objects\obj_keyGreen</object>
+    <object>objects\obj_keyYellow</object>
+    <object>objects\obj_mainKey</object>
+    <object>objects\obj_OpenChestGui</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

@@ -78,7 +78,8 @@ moveY = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//State Controller
+            <string>scr_get_input();
+//State Controller
 switch (state) {
     case character.idle:
         scr_MCharacter_idle();
@@ -120,6 +121,31 @@ if (pressA + pressD !=0 and pressA != pressD) {
 //Apply movement
 x += moveX;
 y += moveY;
+
+//Open Chest
+chest = instance_nearest(obj_MCharacter.x, obj_MCharacter.y, obj_chest)
+    x1 = chest.x
+    y1 = chest.y
+    
+    x2 = obj_MCharacter.x
+    y2 = obj_MCharacter.y
+    
+    distance = sqrt(sqr(x2-x1)+sqr(y2-y1));
+if (distance &lt; 64) {
+    instance_create(chest.x,chest.y,obj_OpenChestGui)
+}
+if (distance &gt; 64) {
+    with(chest){
+    instance_destroy()
+}
+}
+if (pressF) == 1 {
+    if (distance &lt; 64) {
+        with(chest){
+            sprite_index = spr_openedchest;
+        }
+    }   
+}
 </string>
           </argument>
         </arguments>
