@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>enum character{
+            <string>randomize();
+enum character{
     idle,
     walking_horizontal,
     walking_vertical,
@@ -42,6 +43,12 @@ spd_run = 4;
 moveX = 0;
 spd_nor_v = 2;
 moveY = 0;
+chest_open = true;
+delete_gui = false;
+key1 = obj_keyRed;
+key2 = obj_keyBlue;
+key3 = obj_keyGreen;
+key4 = obj_keyYellow;
 </string>
           </argument>
         </arguments>
@@ -124,27 +131,87 @@ y += moveY;
 
 //Open Chest
 chest = instance_nearest(obj_MCharacter.x, obj_MCharacter.y, obj_chest)
-    x1 = chest.x
-    y1 = chest.y
+
+x1 = chest.x
+y1 = chest.y
     
-    x2 = obj_MCharacter.x
-    y2 = obj_MCharacter.y
-    
-    distance = sqrt(sqr(x2-x1)+sqr(y2-y1));
-if (distance &lt; 64) {
-    instance_create(chest.x,chest.y,obj_OpenChestGui)
-}
-if (distance &gt; 64) {
-    with(chest){
-    instance_destroy()
-}
-}
+x2 = obj_MCharacter.x
+y2 = obj_MCharacter.y
+
+distance = sqrt(sqr(x2-x1)+sqr(y2-y1));
+
+
 if (pressF) == 1 {
     if (distance &lt; 64) {
-        with(chest){
-            sprite_index = spr_openedchest;
-        }
+        delete_gui = true;
+        chest_open = false;
+        found_key = false;
+        do {
+            t = irandom(5);
+            switch (t) {
+                case 0:
+                    if (keys[0] == 0) {
+                        instance_create(chest.x, chest.y-5, obj_keyRed);
+                        found_key = true;
+                        keys[0] = 1;
+                    }
+                    break;
+                case 1:
+                    if (keys[1] == 0) {
+                        instance_create(chest.x, chest.y-5, obj_keyBlue);
+                        found_key = true;
+                        keys[1] = 1;
+                    }
+                    break;
+                case 2:
+                    if (keys[2] == 0) {
+                        instance_create(chest.x, chest.y-5, obj_keyGreen);
+                        found_key = true;
+                        keys[2] = 1;
+                    }
+                    break;    
+                case 3:
+                    if (keys[3] == 0) {
+                        instance_create(chest.x, chest.y-5, obj_keyYellow);
+                        found_key = true;
+                        keys[3] = 1;
+                    }
+                    break;
+                case 4:
+                    if (keys[0] + keys[1] + keys[2] + keys[3] == 40) {
+                        instance_create(chest.x,chest.y-5, obj_mainKey)
+                    }
+                    break;
+            }
+            if (found_key) {
+                break;
+            }
+        } until (false); 
+        with(chest) {
+            sprite_index = spr_openedchest
+        }   
     }   
+}
+
+if (distance &lt; 64) {
+    if (chest_open == true) {
+    instance_create(chest.x,chest.y-30,obj_OpenChestGui)
+    }
+}
+
+if (distance &gt; 64 and delete_gui = true) {
+    delete_gui = false;
+    with(obj_OpenChestGui) {
+        instance_destroy();
+    }
+}
+
+if (distance &gt; 64) {
+    chest_open = true;
+    delete_gui = true;
+}
+if (chest.sprite_index == spr_openedchest) {
+    chest_open = false;
 }
 </string>
           </argument>
